@@ -1,0 +1,23 @@
+{
+    "type": "function",
+    "function": {
+        "name": "read_file",
+        "description": "Read content of file by given file id.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_id": {
+                    "type": "string",
+                    "description": "User file id."
+                },
+                "user_id": {
+                    "type": "string",
+                    "description": "Id that user said to you"
+                }
+            },
+            "required": [
+                "file_id", "user_id"
+            ]
+        }
+    }
+}

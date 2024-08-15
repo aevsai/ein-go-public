@@ -1,0 +1,19 @@
+{
+    "type": "function",
+    "function": {
+        "name": "search_internet",
+        "description": "Request information from internet.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "Query for the intenet search."
+                }
+            },
+            "required": [
+                "query"
+            ]
+        }
+    }
+}

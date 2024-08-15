@@ -1,0 +1,47 @@
+version: "3.9"
+services: 
+  postgresql: 
+    container_name: "postgresql"
+    image: postgres:13.3
+    environment: 
+      POSTGRES_DB: "goland"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes: 
+      - ../2. Init Database:/docker-entrypoint-initdb.d
+      - .:/var/lib/postgresql/data
+    ports: 
+      - "5432:5432"
+    healthcheck: 
+      test: ["CMD-SHELL", "pg_isready -U admin -d goland"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    deploy: 
+      resources: 
+        limits: 
+          cpus: '1'
+          memory: 2G
+
+  monolith: 
+    container_name: einstein-server
+    image: ghcr.io/aevsai/einstein-server:latest
+    restart: always
+    env_file:
+      - .env
+    environment: 
+      DB_HOST: postgresql
+      DB_PORT: 5432
+      DB_USER: "admin"
+      DB_PASSWORD: "admin"
+      DB_NAME: "goland"
+    ports: 
+      - "127.0.0.1:8080:8080"
+
+networks: 
+  default: 
+    name: "goland-bridge"
+

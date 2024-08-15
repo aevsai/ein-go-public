@@ -1,0 +1,19 @@
+{
+    "type": "function",
+    "function": {
+        "name": "add_new_calendar",
+        "description": "Gives user ability to add new calendar to account",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "type": "string",
+                    "description": "current user id."
+                }
+            },
+            "required": [
+                "user_id"
+            ]
+        }
+    }
+}

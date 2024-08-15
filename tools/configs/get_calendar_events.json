@@ -1,0 +1,31 @@
+{
+    "type": "function",
+    "function": {
+        "name": "get_calendar_events",
+        "description": "Get events from calendar by requested params.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "type": "string",
+                    "description": "Current user id."
+                },
+                "events_limit": {
+                    "type": "number",
+                    "description": "Number of events to request from calendar"
+                },
+                "time_from": {
+                    "type": "string",
+                    "description": "Start Timestamp from which request events in RFC3339 format"
+                },
+                "time_to": {
+                    "type": "string",
+                    "description": "End Timestamp up to which request events in RFC3339 format"
+                }
+            },
+            "required": [
+                "user_id", "events_limit", "time_from"
+            ]
+        }
+    }
+}
